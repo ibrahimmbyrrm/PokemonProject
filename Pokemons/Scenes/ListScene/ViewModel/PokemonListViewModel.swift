@@ -7,9 +7,9 @@
 
 import Foundation
 
-class PokemonListViewModel : ListViewModelOutput{
+final class PokemonListViewModel : ListViewModelOutput{
     
-    var listService: ListAPIService = APIManager()
+    lazy var listService: ListAPIService = APIManager()
     var pokemonList: [ListPokemonResponse] = []
     var ListOutput: ListViewOutput?
 

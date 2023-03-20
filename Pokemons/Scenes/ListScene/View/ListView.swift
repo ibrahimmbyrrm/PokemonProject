@@ -14,7 +14,7 @@ class ListView: UIViewController, ListViewOutput {
             self.pokemonTableView.reloadData()
         }
     }
-    var pokelist = [ListPokemonResponse]()
+    private lazy var pokelist = [ListPokemonResponse]()
     lazy var listViewModel : ListViewModelOutput = PokemonListViewModel()
     @IBOutlet weak var pokemonTableView: UITableView!
     override func viewDidLoad() {
@@ -45,6 +45,9 @@ extension ListView : UITableViewDelegate, UITableViewDataSource {
         let cell = pokemonTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PokemonCell
         cell.updateUI(poke: pokelist[indexPath.row], index: indexPath)
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
     
