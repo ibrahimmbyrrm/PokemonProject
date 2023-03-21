@@ -9,7 +9,7 @@ import Foundation
 
 struct APIManager: ListAPIService, DetailAPIService{
     let requestURL = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=30")
-    
+    //Request to fetch all Pokemons
     func fetchPokemons(completion : @escaping(Result<[ListPokemonResponse], FetchError>)->Void) {
         guard let requestURL = requestURL else { completion(.failure(.wrongURL)) ; return}
         let task = URLSession.shared.dataTask(with: requestURL) { data, _, error in
@@ -21,13 +21,14 @@ struct APIManager: ListAPIService, DetailAPIService{
         task.resume()
     }
     
+    //Request to fetch Pokemon's Details
     func fetchDetail(urlString : String, completion: @escaping(PokemonModel)->Void) {
         guard let url = URL(string: urlString) else {return}
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {return}
             guard error == nil else {return}
             let pokemonData = try? JSONDecoder().decode(PokemonModel.self, from: data)
-            guard let pokemonData = pokemonData else {return}
+            guard let pokemonData = pokemonData else {print(FetchError.parsingError);return}
             completion(pokemonData)
         }
         task.resume()

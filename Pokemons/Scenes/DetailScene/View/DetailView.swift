@@ -13,34 +13,31 @@ class DetailView: UIViewController {
     @IBOutlet weak var pokemonAbilities: UITableView!
     @IBOutlet weak var pokemonDetailName: UILabel!
     @IBOutlet weak var pokemonDetailImage: UIImageView!
+    
     static var url : String?
     var abilityList = [Ability]() {
         didSet{
             self.pokemonAbilities.reloadData()
         }
     }
+    var detailViewModel = DetailViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         pokemonAbilities.delegate = self
         pokemonAbilities.dataSource = self
+        updateUI(url: DetailView.url!)
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        print(DetailView.url!)
-        updateUI(url: DetailView.url!)
+
+    func updateUI(url : String) {
+        detailViewModel.createPokemonModel(url: url)
+        DispatchQueue.main.async {
+            self.pokemonDetailName.text = self.detailViewModel.pokemonViewModel?.name.uppercased()
+            self.pokemonDetailImage.sd_setImage(with: self.detailViewModel.pokemonViewModel?.photoURL)
+            self.abilityList = self.detailViewModel.pokemonViewModel!.abilities
+        }
     }
     
-    func updateUI(url : String) {
-        APIManager().fetchDetail(urlString: url) { pokemon in
-            DispatchQueue.main.async {
-                self.pokemonDetailName.text = pokemon.name
-                self.pokemonDetailImage.sd_setImage(with: URL(string: pokemon.sprites.other.home.front_default))
-                self.abilityList = pokemon.abilities
-            }
-          
-        }
-        
-    }
 }
 extension DetailView : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

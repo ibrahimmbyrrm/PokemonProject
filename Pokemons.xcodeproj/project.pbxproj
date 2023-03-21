@@ -119,9 +119,9 @@
 		800F7E5A29C8E9E7004A58F5 /* Pokemons */ = {
 			isa = PBXGroup;
 			children = (
-				800F7E9429C8EFD5004A58F5 /* Service */,
-				800F7E9529C8EFD8004A58F5 /* Protocols */,
 				800F7E9629C8EFF4004A58F5 /* Core */,
+				800F7E9529C8EFD8004A58F5 /* Protocols */,
+				800F7E9429C8EFD5004A58F5 /* Service */,
 				800F7EA229C921D5004A58F5 /* Scenes */,
 			);
 			path = Pokemons;
@@ -202,6 +202,7 @@
 		800F7EA229C921D5004A58F5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				800F7E9129C8EFCE004A58F5 /* Model */,
 				800F7EA429C92238004A58F5 /* DetailScene */,
 				800F7EA329C921DF004A58F5 /* ListScene */,
 			);
@@ -213,7 +214,6 @@
 			children = (
 				800F7E9329C8EFD2004A58F5 /* ViewModel */,
 				800F7E9229C8EFD0004A58F5 /* View */,
-				800F7E9129C8EFCE004A58F5 /* Model */,
 			);
 			path = ListScene;
 			sourceTree = "<group>";
@@ -223,16 +223,8 @@
 			children = (
 				800F7EA829C924BA004A58F5 /* ViewModel */,
 				800F7EA729C924B8004A58F5 /* View */,
-				800F7EA629C924B4004A58F5 /* Model */,
 			);
 			path = DetailScene;
-			sourceTree = "<group>";
-		};
-		800F7EA629C924B4004A58F5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		800F7EA729C924B8004A58F5 /* View */ = {

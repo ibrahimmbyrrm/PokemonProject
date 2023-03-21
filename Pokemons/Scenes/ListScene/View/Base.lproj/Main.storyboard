@@ -35,14 +35,14 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benim Pokemonum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZc-jb-gwT">
-                                                    <rect key="frame" x="120" y="16" width="262" height="29"/>
+                                                    <rect key="frame" x="119" y="50" width="254" height="29"/>
                                                     <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY3-pV-YeW">
-                                                    <rect key="frame" x="290" y="83" width="91" height="35"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY3-pV-YeW">
+                                                    <rect key="frame" x="279" y="83" width="94" height="35"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Discover">
@@ -54,11 +54,11 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hY3-pV-YeW" secondAttribute="trailing" constant="-8" id="7S0-LG-NbF"/>
-                                                <constraint firstItem="UZc-jb-gwT" firstAttribute="leading" secondItem="rbG-s1-WAI" secondAttribute="trailing" constant="8" id="CZK-O6-hOk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hY3-pV-YeW" secondAttribute="trailing" id="7S0-LG-NbF"/>
+                                                <constraint firstItem="UZc-jb-gwT" firstAttribute="leading" secondItem="rbG-s1-WAI" secondAttribute="trailing" constant="7" id="CZK-O6-hOk"/>
                                                 <constraint firstAttribute="bottom" secondItem="rbG-s1-WAI" secondAttribute="bottom" constant="17" id="UBo-bU-8L3"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="UZc-jb-gwT" secondAttribute="trailing" constant="-9" id="c9f-Jo-jUo"/>
-                                                <constraint firstItem="UZc-jb-gwT" firstAttribute="top" secondItem="rbG-s1-WAI" secondAttribute="top" id="kRg-YE-lfw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="UZc-jb-gwT" secondAttribute="trailing" id="c9f-Jo-jUo"/>
+                                                <constraint firstItem="UZc-jb-gwT" firstAttribute="top" secondItem="rbG-s1-WAI" secondAttribute="top" constant="34" id="kRg-YE-lfw"/>
                                                 <constraint firstItem="rbG-s1-WAI" firstAttribute="leading" secondItem="uQu-LF-RSJ" secondAttribute="leading" constant="16" id="tu9-hC-1sh"/>
                                                 <constraint firstItem="hY3-pV-YeW" firstAttribute="bottom" secondItem="uQu-LF-RSJ" secondAttribute="bottomMargin" id="uvn-Lz-csE"/>
                                                 <constraint firstItem="rbG-s1-WAI" firstAttribute="top" secondItem="uQu-LF-RSJ" secondAttribute="top" constant="16" id="zlt-Tu-iGj"/>

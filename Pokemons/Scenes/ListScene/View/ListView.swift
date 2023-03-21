@@ -8,6 +8,7 @@
 import UIKit
 
 class ListView: UIViewController, ListViewOutput {
+
     func saveList(list: [ListPokemonResponse]) {
         self.pokelist = list
         DispatchQueue.main.async {
@@ -36,6 +37,7 @@ class ListView: UIViewController, ListViewOutput {
 extension ListView : UITableViewDelegate, UITableViewDataSource, DiscoverButton {
     func discoverButtonClicked(indexPath: IndexPath) {
         DetailView.url = pokelist[indexPath.row].url
+        
         performSegue(withIdentifier: "toDetail", sender: nil)
     }
     

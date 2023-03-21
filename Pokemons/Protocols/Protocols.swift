@@ -25,18 +25,11 @@ protocol ListViewModelOutput {
 }
 protocol ListViewOutput {
     func saveList(list : [ListPokemonResponse])
+  
 }
 
 protocol DetailViewModelOutput {
-    func fetchData()
-    var apiService : DetailAPIService {get}
-    var pokemonModel : PokemonModel? {get set}
-    var DetailViewOutput : DetailViewOutput? {get}
-    func detailSetDelegate(output : DetailViewOutput)
-}
-
-protocol DetailViewOutput {
-    func updateUI(model : PokemonModel)
+  
 }
 
 protocol DiscoverButton {

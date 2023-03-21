@@ -34,7 +34,7 @@ class PokemonCell: UITableViewCell {
     func updateUI(url : String) {
         APIManager().fetchDetail(urlString: url) { pokemon in
             DispatchQueue.main.async {
-                self.pokemonNameLabel.text = pokemon.name
+                self.pokemonNameLabel.text = pokemon.name.uppercased()
                     self.pokemonIconImage.sd_setImage(with: URL(string: pokemon.sprites.other.home.front_default))
             }
             
