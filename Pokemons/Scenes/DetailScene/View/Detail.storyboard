@@ -16,26 +16,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.arrow.up.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yLd-hM-W2b">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yLd-hM-W2b">
                                 <rect key="frame" x="36" y="75" width="321" height="309"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PokenAdı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAD-Iu-Xlg">
-                                <rect key="frame" x="121" y="392" width="150" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PokenAdı" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAD-Iu-Xlg">
+                                <rect key="frame" x="16" y="392" width="361" height="46"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="K42-Gd-UMA">
-                                <rect key="frame" x="16" y="493" width="361" height="291"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="K42-Gd-UMA">
+                                <rect key="frame" x="0.0" y="463" width="393" height="355"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K42-Gd-UMA" firstAttribute="top" secondItem="oAD-Iu-Xlg" secondAttribute="bottom" constant="25" id="1vi-ht-NNW"/>
+                            <constraint firstItem="yLd-hM-W2b" firstAttribute="centerX" secondItem="oAD-Iu-Xlg" secondAttribute="centerX" id="ILE-2K-ZoD"/>
+                            <constraint firstItem="oAD-Iu-Xlg" firstAttribute="top" secondItem="yLd-hM-W2b" secondAttribute="bottom" constant="7.6666666666666856" id="MRK-3h-NXr"/>
+                            <constraint firstItem="yLd-hM-W2b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="36" id="Nq1-4Q-C2c"/>
+                            <constraint firstItem="K42-Gd-UMA" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Qho-JN-Mwz"/>
+                            <constraint firstItem="oAD-Iu-Xlg" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="WQ7-iJ-CPw"/>
+                            <constraint firstItem="yLd-hM-W2b" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="ZRY-Ye-h8X"/>
+                            <constraint firstItem="K42-Gd-UMA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eRu-q3-ddP"/>
+                            <constraint firstItem="oAD-Iu-Xlg" firstAttribute="centerX" secondItem="K42-Gd-UMA" secondAttribute="centerX" id="juy-J5-6H4"/>
+                            <constraint firstItem="oAD-Iu-Xlg" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="392" id="nhY-vR-THf"/>
+                            <constraint firstItem="K42-Gd-UMA" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="zoQ-x9-56Q"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pokemonAbilities" destination="K42-Gd-UMA" id="Nm3-7m-TGc"/>
+                        <outlet property="pokemonDetailImage" destination="yLd-hM-W2b" id="3ny-Iq-OMi"/>
+                        <outlet property="pokemonDetailName" destination="oAD-Iu-Xlg" id="Ypy-Ic-IUr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

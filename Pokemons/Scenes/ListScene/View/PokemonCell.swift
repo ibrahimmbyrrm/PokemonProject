@@ -12,6 +12,8 @@ class PokemonCell: UITableViewCell {
 
     @IBOutlet weak var pokemonNameLabel: UILabel!
     @IBOutlet weak var pokemonIconImage: UIImageView!
+    var discoverButton : DiscoverButton?
+    var indexPath : IndexPath?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,10 +31,18 @@ class PokemonCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func updateUI(poke : ListPokemonResponse, index : IndexPath) {
-        self.pokemonIconImage.sd_setImage(with: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(index.row + 1).png"))
-        self.pokemonNameLabel.text = poke.name
+    func updateUI(url : String) {
+        APIManager().fetchDetail(urlString: url) { pokemon in
+            DispatchQueue.main.async {
+                self.pokemonNameLabel.text = pokemon.name
+                    self.pokemonIconImage.sd_setImage(with: URL(string: pokemon.sprites.other.home.front_default))
+            }
+            
+           
+        }
     }
-
-
+    @IBAction func discoverButtonClicked(_ sender: Any) {
+        discoverButton?.discoverButtonClicked(indexPath: indexPath!)
+    }
+    
 }

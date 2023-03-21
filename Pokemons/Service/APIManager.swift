@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct APIManager: ListAPIService{
+struct APIManager: ListAPIService, DetailAPIService{
     let requestURL = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=30")
     
     func fetchPokemons(completion : @escaping(Result<[ListPokemonResponse], FetchError>)->Void) {
@@ -17,6 +17,18 @@ struct APIManager: ListAPIService{
             let responseData = try? JSONDecoder().decode(ListResponseData.self, from: data)
             guard let responseData = responseData else { completion(.failure(.parsingError)); return}
             completion(.success(responseData.results))
+        }
+        task.resume()
+    }
+    
+    func fetchDetail(urlString : String, completion: @escaping(PokemonModel)->Void) {
+        guard let url = URL(string: urlString) else {return}
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {return}
+            guard error == nil else {return}
+            let pokemonData = try? JSONDecoder().decode(PokemonModel.self, from: data)
+            guard let pokemonData = pokemonData else {return}
+            completion(pokemonData)
         }
         task.resume()
     }
