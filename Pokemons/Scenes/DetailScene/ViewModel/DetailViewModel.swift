@@ -6,28 +6,21 @@
 //
 
 import Foundation
+import UIKit
 
-class DetailViewModel{
+class DetailViewModel: DetailViewModelOutput{
+    var detailView: DetailViewOutput?
+    
+    func setDelegate(output: DetailViewOutput) {
+        self.detailView = output
+    }
+    
     var pokemonViewModel : PokemonViewModel?
     
     func createPokemonModel(url : String){
         APIManager().fetchDetail(urlString: url) { result in
-            self.pokemonViewModel = PokemonViewModel(pokemon: result)
+            self.detailView?.changeUI(name: result.name, abilities: result.abilities, imageURL: result.sprites.other.home.front_default)
         }
     }
     
-}
-
-struct PokemonViewModel {
-    var pokemon : PokemonModel
-    
-    var name : String {
-        return pokemon.name
-    }
-    var photoURL : URL {
-        return URL(string: pokemon.sprites.other.home.front_default)!
-    }
-    var abilities : [Ability] {
-        return pokemon.abilities
-    }
 }

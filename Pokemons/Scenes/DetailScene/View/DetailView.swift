@@ -14,29 +14,30 @@ class DetailView: UIViewController {
     @IBOutlet weak var pokemonDetailName: UILabel!
     @IBOutlet weak var pokemonDetailImage: UIImageView!
     
+    private lazy var detailViewModel : DetailViewModelOutput = DetailViewModel()
+    private lazy var abilityList = [Ability]()
     static var url : String?
-    var abilityList = [Ability]() {
-        didSet{
-            self.pokemonAbilities.reloadData()
-        }
-    }
-    var detailViewModel = DetailViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pokemonAbilities.delegate = self
         pokemonAbilities.dataSource = self
-        updateUI(url: DetailView.url!)
+        detailViewModel.setDelegate(output: self)
+        detailViewModel.createPokemonModel(url: DetailView.url!)
         
     }
 
-    func updateUI(url : String) {
-        detailViewModel.createPokemonModel(url: url)
+}
+extension DetailView : DetailViewOutput {
+    func changeUI(name: String, abilities: [Ability], imageURL: String) {
         DispatchQueue.main.async {
-            self.pokemonDetailName.text = self.detailViewModel.pokemonViewModel?.name.uppercased()
-            self.pokemonDetailImage.sd_setImage(with: self.detailViewModel.pokemonViewModel?.photoURL)
-            self.abilityList = self.detailViewModel.pokemonViewModel!.abilities
+            self.pokemonDetailName.text = name.uppercased()
+            self.abilityList = abilities
+            self.pokemonDetailImage.sd_setImage(with: URL(string: imageURL))
+            self.pokemonAbilities.reloadData()
         }
     }
+    
     
 }
 extension DetailView : UITableViewDelegate, UITableViewDataSource {
@@ -49,7 +50,7 @@ extension DetailView : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = abilityList[indexPath.row].ability.name
+        cell.textLabel?.text = abilityList[indexPath.row].ability.name.uppercased()
         return cell
     }
 }

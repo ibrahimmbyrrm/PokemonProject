@@ -29,9 +29,16 @@ protocol ListViewOutput {
 }
 
 protocol DetailViewModelOutput {
-  
+    var detailView : DetailViewOutput? {get}
+    func setDelegate(output : DetailViewOutput)
+    func createPokemonModel(url : String)
+}
+protocol DetailViewOutput {
+    func changeUI(name : String, abilities : [Ability], imageURL : String)
 }
 
 protocol DiscoverButton {
     func discoverButtonClicked(indexPath : IndexPath)
 }
+
+
