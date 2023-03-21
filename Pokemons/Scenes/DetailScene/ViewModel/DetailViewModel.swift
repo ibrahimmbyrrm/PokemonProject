@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 class DetailViewModel: DetailViewModelOutput{
     var apiService: DetailAPIService = APIManager()

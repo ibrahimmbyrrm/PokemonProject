@@ -12,18 +12,31 @@ class PokemonCell: UITableViewCell {
 
     @IBOutlet weak var pokemonNameLabel: UILabel!
     @IBOutlet weak var pokemonIconImage: UIImageView!
+    @IBOutlet weak var discoverButtonView: UIButton!
     var discoverButton : DiscoverButton?
     var indexPath : IndexPath?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setupViews()
+
+    }
+    
+    func setupViews() {
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 4
+        self.layer.cornerRadius = 25
+        self.layer.borderWidth = 10
         self.layer.shadowOffset = CGSize(width: -1, height: 1)
         let borderColor: UIColor = .black
         self.layer.borderColor = borderColor.cgColor
-
+        self.selectionStyle = .none
+        self.pokemonIconImage.layer.masksToBounds = false
+        self.pokemonIconImage.layer.borderWidth = 3
+        self.pokemonIconImage.layer.cornerRadius = pokemonIconImage.frame.size.width / 2
+        self.pokemonIconImage.layer.borderColor = borderColor.cgColor
+        self.pokemonIconImage.clipsToBounds = true
+        discoverButtonView.layer.cornerRadius = 10
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
