@@ -17,8 +17,6 @@ struct ListPokemonResponse : Codable {
     let url : String
 }
 
-
-
 struct LastModel {
     var name : String
     var abilities : [Ability]

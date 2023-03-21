@@ -18,18 +18,17 @@ protocol ListViewModelOutput {
     func fetchList()
     
     var listService : ListAPIService {get}
-    var pokemonList : [ListPokemonResponse] {get set}
     var ListOutput : ListViewOutput? {get}
    
     func setDelegate(output : ListViewOutput)
 }
 protocol ListViewOutput {
     func saveList(list : [ListPokemonResponse])
-  
 }
 
 protocol DetailViewModelOutput {
     var detailView : DetailViewOutput? {get}
+    var apiService : DetailAPIService {get}
     func setDelegate(output : DetailViewOutput)
     func createPokemonModel(url : String)
 }

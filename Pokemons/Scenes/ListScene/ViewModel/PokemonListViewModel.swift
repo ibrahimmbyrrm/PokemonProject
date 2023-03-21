@@ -10,7 +10,6 @@ import Foundation
 final class PokemonListViewModel : ListViewModelOutput{
     
     lazy var listService: ListAPIService = APIManager()
-    var pokemonList: [ListPokemonResponse] = []
     var ListOutput: ListViewOutput?
 
     init() {
@@ -21,8 +20,7 @@ final class PokemonListViewModel : ListViewModelOutput{
         listService.fetchPokemons { result in
             switch result {
             case .success(let pokemonList):
-                self.pokemonList = pokemonList
-                self.ListOutput?.saveList(list: self.pokemonList)
+                self.ListOutput?.saveList(list: pokemonList)
             case .failure(let error):
                 print(error)
             }
@@ -32,4 +30,5 @@ final class PokemonListViewModel : ListViewModelOutput{
     func setDelegate(output: ListViewOutput) {
         self.ListOutput = output
     }
+    
 }

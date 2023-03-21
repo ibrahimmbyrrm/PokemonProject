@@ -31,16 +31,16 @@ class PokemonCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     func updateUI(url : String) {
         APIManager().fetchDetail(urlString: url) { pokemon in
             DispatchQueue.main.async {
                 self.pokemonNameLabel.text = pokemon.name.uppercased()
-                    self.pokemonIconImage.sd_setImage(with: URL(string: pokemon.sprites.other.home.front_default))
+                self.pokemonIconImage.sd_setImage(with: URL(string: pokemon.sprites.other.home.front_default))
             }
-            
-           
         }
     }
+    
     @IBAction func discoverButtonClicked(_ sender: Any) {
         discoverButton?.discoverButtonClicked(indexPath: indexPath!)
     }
