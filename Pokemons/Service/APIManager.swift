@@ -7,11 +7,19 @@
 
 import Foundation
 
+enum FetchError : Error {
+    case wrongURL
+    case parsingError
+    case fetchingError
+}
+
 struct APIManager: ListAPIService, DetailAPIService{
+    
     let requestURL = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=30")
+    
     //Request to fetch all Pokemons
     func fetchPokemons(completion : @escaping(Result<[ListPokemonResponse], FetchError>)->Void) {
-        guard let requestURL = requestURL else { completion(.failure(.wrongURL)) ; return}
+        guard let requestURL = requestURL else {completion(.failure(.wrongURL)) ; return}
         let task = URLSession.shared.dataTask(with: requestURL) { data, _, error in
             guard let data = data else { completion(.failure(.fetchingError)) ; return}
             let responseData = try? JSONDecoder().decode(ListResponseData.self, from: data)
@@ -35,8 +43,4 @@ struct APIManager: ListAPIService, DetailAPIService{
     }
 
 }
-enum FetchError : Error {
-    case wrongURL
-    case parsingError
-    case fetchingError
-}
+

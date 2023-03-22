@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class PokemonListViewModel : ListViewModelOutput{
     
@@ -23,6 +24,7 @@ final class PokemonListViewModel : ListViewModelOutput{
                 self.ListOutput?.saveList(list: pokemonList)
             case .failure(let error):
                 print(error)
+                
             }
         }
     }
@@ -30,5 +32,6 @@ final class PokemonListViewModel : ListViewModelOutput{
     func setDelegate(output: ListViewOutput) {
         self.ListOutput = output
     }
+
     
 }

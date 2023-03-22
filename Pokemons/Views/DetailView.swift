@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class DetailView: UIViewController {
+class DetailView: UIViewController, DetailViewOutput {
 
     @IBOutlet weak var abilityTableView: UITableView!
     @IBOutlet weak var pokemonDetailName: UILabel!
@@ -16,8 +16,7 @@ class DetailView: UIViewController {
     
     private lazy var detailViewModel : DetailViewModelOutput = DetailViewModel()
     private lazy var abilityList = [Ability]()
-    
-    static var url : String?
+    static var url : String? //Accessible from all classes.
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +24,7 @@ class DetailView: UIViewController {
         
     }
     
-    private func initialConfigure() {
-        abilityTableView.delegate = self
-        abilityTableView.dataSource = self
-        detailViewModel.setDelegate(output: self)
-        detailViewModel.createPokemonModel(url: DetailView.url!)
-    }
-
-}
-extension DetailView : DetailViewOutput {
+    //Set all data by viewModel's response.
     func changeUI(name: String, abilities: [Ability], imageURL: String) {
         DispatchQueue.main.async {
             self.pokemonDetailName.text = name.uppercased()
@@ -42,15 +33,29 @@ extension DetailView : DetailViewOutput {
             self.abilityTableView.reloadData()
         }
     }
+    
+    private func initialConfigure() {
+        let borderColor : UIColor = .black
+        self.pokemonDetailImage.layer.borderWidth = 2
+        self.pokemonDetailImage.layer.borderColor = borderColor.cgColor
+        abilityTableView.delegate = self
+        abilityTableView.dataSource = self
+        detailViewModel.setDelegate(output: self)
+        detailViewModel.createPokemonModel(url: DetailView.url!)
+    }
+
 }
 
 extension DetailView : UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return abilityList.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = abilityList[indexPath.row].ability.name.uppercased()
+        let cell = abilityTableView.dequeueReusableCell(withIdentifier: "AbilityCell", for: indexPath) as! AbilityCell
+        cell.abilityNameLabel.text = abilityList[indexPath.row].ability.name.uppercased()
+        
         return cell
     }
 }

@@ -8,22 +8,21 @@
 import UIKit
 
 class ListView: UIViewController, ListViewOutput {
-
+    @IBOutlet weak var pokemonTableView: UITableView!
+    
+    private lazy var pokelist = [ListPokemonResponse]()
+    lazy var listViewModel : ListViewModelOutput = PokemonListViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initialConfigure()
+    }
+    
     func saveList(list: [ListPokemonResponse]) {
         self.pokelist = list
         DispatchQueue.main.async {
             self.pokemonTableView.reloadData()
         }
-    }
-    
-    var transferURL : String?
-    private lazy var pokelist = [ListPokemonResponse]()
-    lazy var listViewModel : ListViewModelOutput = PokemonListViewModel()
-    @IBOutlet weak var pokemonTableView: UITableView!
-   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        initialConfigure()
     }
     
     private func initialConfigure() {
