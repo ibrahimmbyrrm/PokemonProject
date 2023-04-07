@@ -46,12 +46,18 @@ class PokemonCell: UITableViewCell {
     }
     
     func updateUI(url : String) {
-        APIManager().fetchDetail(urlString: url) { pokemon in
-            DispatchQueue.main.async {
-                self.pokemonNameLabel.text = pokemon.name.uppercased()
-                self.pokemonIconImage.sd_setImage(with: URL(string: pokemon.sprites.other.home.front_default))
+        NetworkManager().fetchData(url: url, type: PokemonModel.self) { response in
+            switch response {
+            case .success(let pokemon):
+                DispatchQueue.main.async {
+                    self.pokemonIconImage.sd_setImage(with: URL(string:pokemon.sprites.other.home.front_default))
+                    self.pokemonNameLabel.text = pokemon.name.uppercased()
+                }
+            case.failure(let error):
+                print(error.rawValue)
             }
         }
+        
     }
     
     @IBAction func discoverButtonClicked(_ sender: Any) {

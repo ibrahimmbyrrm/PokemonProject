@@ -7,40 +7,29 @@
 
 import Foundation
 
-enum FetchError : Error {
-    case wrongURL
-    case parsingError
-    case fetchingError
-}
-
-struct APIManager: ListAPIService, DetailAPIService{
+struct NetworkManager : GenericService{
     
-    let requestURL = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=30")
-    
-    //Request to fetch all Pokemons
-    func fetchPokemons(completion : @escaping(Result<[ListPokemonResponse], FetchError>)->Void) {
-        guard let requestURL = requestURL else {completion(.failure(.wrongURL)) ; return}
-        let task = URLSession.shared.dataTask(with: requestURL) { data, _, error in
-            guard let data = data else { completion(.failure(.fetchingError)) ; return}
-            let responseData = try? JSONDecoder().decode(ListResponseData.self, from: data)
-            guard let responseData = responseData else { completion(.failure(.parsingError)); return}
-            completion(.success(responseData.results))
-        }
-        task.resume()
+    func fetchData<T : Codable>(url : String ,type : T.Type, completion : @escaping(Result<T, HTTPError>)->Void) {
+        guard let url = URL(string: url) else {return}
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                completion(.failure(.invalidData))
+                return
+            }
+            self.responseHandler(data: data) { response in
+                completion(response)
+            }
+            
+        }.resume()
     }
     
-    //Request to fetch Pokemon's Details
-    func fetchDetail(urlString : String, completion: @escaping(PokemonModel)->Void) {
-        guard let url = URL(string: urlString) else {return}
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {return}
-            guard error == nil else {return}
-            let pokemonData = try? JSONDecoder().decode(PokemonModel.self, from: data)
-            guard let pokemonData = pokemonData else {print(FetchError.parsingError);return}
-            completion(pokemonData)
+    func responseHandler<T : Codable>(data : Data, completion : @escaping(Result<T, HTTPError>)->Void) {
+        do {
+            let result = try JSONDecoder().decode(T.self, from: data)
+            completion(.success(result))
+        }catch {
+            completion(.failure(.parsingError))
         }
-        task.resume()
     }
-
 }
 

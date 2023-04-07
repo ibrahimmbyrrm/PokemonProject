@@ -24,6 +24,8 @@
 		800F7EAC29C92526004A58F5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800F7EAB29C92526004A58F5 /* DetailView.swift */; };
 		800F7EAE29C9A885004A58F5 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800F7EAD29C9A885004A58F5 /* DetailViewModel.swift */; };
 		800F7EB129CB3DB9004A58F5 /* AbilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800F7EB029CB3DB9004A58F5 /* AbilityCell.swift */; };
+		8035D11329E08C5B005A93AF /* NetoworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035D11229E08C5B005A93AF /* NetoworkHelper.swift */; };
+		8035D11529E098FA005A93AF /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035D11429E098FA005A93AF /* UIViewController+Alert.swift */; };
 		80C0789729CF55F6002EA0B5 /* UITableView+MainThreadReload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0789629CF55F6002EA0B5 /* UITableView+MainThreadReload.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		800F7EAB29C92526004A58F5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		800F7EAD29C9A885004A58F5 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		800F7EB029CB3DB9004A58F5 /* AbilityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityCell.swift; sourceTree = "<group>"; };
+		8035D11229E08C5B005A93AF /* NetoworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetoworkHelper.swift; sourceTree = "<group>"; };
+		8035D11429E098FA005A93AF /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		80C0789629CF55F6002EA0B5 /* UITableView+MainThreadReload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+MainThreadReload.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				800F7E9729C8F0C1004A58F5 /* APIManager.swift */,
+				8035D11229E08C5B005A93AF /* NetoworkHelper.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				80C0789629CF55F6002EA0B5 /* UITableView+MainThreadReload.swift */,
+				8035D11429E098FA005A93AF /* UIViewController+Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8035D11529E098FA005A93AF /* UIViewController+Alert.swift in Sources */,
 				800F7E6029C8E9E7004A58F5 /* ListView.swift in Sources */,
 				800F7E9F29C9146E004A58F5 /* PokemonListViewModel.swift in Sources */,
 				800F7E5C29C8E9E7004A58F5 /* AppDelegate.swift in Sources */,
@@ -343,6 +350,7 @@
 				800F7E9029C8EFCB004A58F5 /* PokemonCell.swift in Sources */,
 				800F7EAE29C9A885004A58F5 /* DetailViewModel.swift in Sources */,
 				80C0789729CF55F6002EA0B5 /* UITableView+MainThreadReload.swift in Sources */,
+				8035D11329E08C5B005A93AF /* NetoworkHelper.swift in Sources */,
 				800F7E9829C8F0C1004A58F5 /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
