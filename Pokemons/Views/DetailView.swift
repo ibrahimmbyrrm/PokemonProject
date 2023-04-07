@@ -14,9 +14,9 @@ class DetailView: UIViewController, DetailViewOutput {
     @IBOutlet weak var pokemonDetailName: UILabel!
     @IBOutlet weak var pokemonDetailImage: UIImageView!
     
-    private lazy var detailViewModel : DetailViewModelOutput = DetailViewModel()
+    lazy var detailViewModel : DetailViewModelOutput = DetailViewModel()
     private lazy var abilityList = [Ability]()
-    
+    lazy var selectedURL = ""
     static var url : String? //Accessible from all classes.
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class DetailView: UIViewController, DetailViewOutput {
         abilityTableView.delegate = self
         abilityTableView.dataSource = self
         detailViewModel.setDelegate(output: self)
-        detailViewModel.createPokemonModel(url: DetailView.url!)
+        detailViewModel.createPokemonModel(url: selectedURL)
     }
 
 }

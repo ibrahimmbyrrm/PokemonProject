@@ -8,17 +8,22 @@
 import UIKit
 
 class ListView: UIViewController, ListViewOutput {
+
     @IBOutlet weak var pokemonTableView: UITableView!
     
     private lazy var pokelist = [ListPokemonResponse]()
     lazy var listViewModel : ListViewModelOutput = PokemonListViewModel()
+    lazy var selectedURL = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialConfigure()
     }
+    func saveList(with error: String) {
+        self.callAlert(title: "ERROR", message: error)
+    }
     
-    func saveList(list: [ListPokemonResponse]) {
+    func saveList(with list: [ListPokemonResponse]) {
         self.pokelist = list
         pokemonTableView.reloadOnMainThread()
     }
@@ -33,8 +38,13 @@ class ListView: UIViewController, ListViewOutput {
 }
 extension ListView : UITableViewDelegate, UITableViewDataSource, DiscoverButton {
     func discoverButtonClicked(indexPath: IndexPath) {
-        DetailView.url = pokelist[indexPath.row].url
+        self.selectedURL = pokelist[indexPath.row].url
         performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let destVC = segue.destination as! DetailView
+            destVC.selectedURL = self.selectedURL
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

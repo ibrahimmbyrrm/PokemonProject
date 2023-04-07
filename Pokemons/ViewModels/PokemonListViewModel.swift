@@ -10,21 +10,16 @@ import UIKit
 
 final class PokemonListViewModel : ListViewModelOutput{
     
-    lazy var listService: ListAPIService = APIManager()
+    lazy var listService: GenericService = NetworkManager()
     var ListOutput: ListViewOutput?
 
-    init() {
-        self.listService = APIManager()
-    }
-    
     func fetchList() {
-        listService.fetchPokemons { result in
-            switch result {
-            case .success(let pokemonList):
-                self.ListOutput?.saveList(list: pokemonList)
+        listService.fetchData(url: BaseURLS.shared.listURL, type: ListResponseData.self) { response in
+            switch response {
+            case .success(let list):
+                self.ListOutput?.saveList(with: list.results)
             case .failure(let error):
-                print(error)
-                
+                self.ListOutput?.saveList(with: error.rawValue)
             }
         }
     }
