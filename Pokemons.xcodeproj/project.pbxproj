@@ -24,6 +24,7 @@
 		800F7EAC29C92526004A58F5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800F7EAB29C92526004A58F5 /* DetailView.swift */; };
 		800F7EAE29C9A885004A58F5 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800F7EAD29C9A885004A58F5 /* DetailViewModel.swift */; };
 		800F7EB129CB3DB9004A58F5 /* AbilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800F7EB029CB3DB9004A58F5 /* AbilityCell.swift */; };
+		80C0789729CF55F6002EA0B5 /* UITableView+MainThreadReload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0789629CF55F6002EA0B5 /* UITableView+MainThreadReload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		800F7EAB29C92526004A58F5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		800F7EAD29C9A885004A58F5 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		800F7EB029CB3DB9004A58F5 /* AbilityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityCell.swift; sourceTree = "<group>"; };
+		80C0789629CF55F6002EA0B5 /* UITableView+MainThreadReload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+MainThreadReload.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		800F7E5A29C8E9E7004A58F5 /* Pokemons */ = {
 			isa = PBXGroup;
 			children = (
+				80C0789529CF55DC002EA0B5 /* Extensions */,
 				800F7E9629C8EFF4004A58F5 /* Core */,
 				800F7E9429C8EFD5004A58F5 /* Service */,
 				800F7E9529C8EFD8004A58F5 /* Protocols */,
@@ -180,6 +183,14 @@
 				800F7EAD29C9A885004A58F5 /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		80C0789529CF55DC002EA0B5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80C0789629CF55F6002EA0B5 /* UITableView+MainThreadReload.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +342,7 @@
 				800F7E8C29C8EA03004A58F5 /* PokemonListModel.swift in Sources */,
 				800F7E9029C8EFCB004A58F5 /* PokemonCell.swift in Sources */,
 				800F7EAE29C9A885004A58F5 /* DetailViewModel.swift in Sources */,
+				80C0789729CF55F6002EA0B5 /* UITableView+MainThreadReload.swift in Sources */,
 				800F7E9829C8F0C1004A58F5 /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

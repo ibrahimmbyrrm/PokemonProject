@@ -16,6 +16,7 @@ class DetailView: UIViewController, DetailViewOutput {
     
     private lazy var detailViewModel : DetailViewModelOutput = DetailViewModel()
     private lazy var abilityList = [Ability]()
+    
     static var url : String? //Accessible from all classes.
     
     override func viewDidLoad() {
@@ -55,7 +56,6 @@ extension DetailView : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = abilityTableView.dequeueReusableCell(withIdentifier: "AbilityCell", for: indexPath) as! AbilityCell
         cell.abilityNameLabel.text = abilityList[indexPath.row].ability.name.uppercased()
-        
         return cell
     }
 }

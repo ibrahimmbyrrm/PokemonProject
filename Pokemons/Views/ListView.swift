@@ -20,9 +20,7 @@ class ListView: UIViewController, ListViewOutput {
     
     func saveList(list: [ListPokemonResponse]) {
         self.pokelist = list
-        DispatchQueue.main.async {
-            self.pokemonTableView.reloadData()
-        }
+        pokemonTableView.reloadOnMainThread()
     }
     
     private func initialConfigure() {
@@ -52,4 +50,6 @@ extension ListView : UITableViewDelegate, UITableViewDataSource, DiscoverButton 
     }
    
 }
+
+
 
