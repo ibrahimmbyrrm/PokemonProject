@@ -10,7 +10,7 @@ import Foundation
 struct NetworkManager : GenericService{
     
     func fetchData<T : Codable>(url : String ,type : T.Type, completion : @escaping(Result<T, HTTPError>)->Void) {
-        guard let url = URL(string: url) else {return}
+        guard let url = url.asUrl else {return}
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 completion(.failure(.invalidData))
